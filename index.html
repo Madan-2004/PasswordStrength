@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/0ceeca1f1f.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>PasswordStrength</title>
+</head>
+<body>
+    <div class="container">
+        <div class="input-box">
+            <div class="con">
+                <input type="password" id="password" placeholder="Password" value="">
+                <button id="submit"><i class="fa-solid fa-circle-chevron-right"></i></button>
+            </div>
+            <p style="display: none;">Password is <span id="type"></span></p>
+        </div>
+    </div>
+
+    <script>
+        var input = document.getElementById("password");
+        var submit = document.getElementById("submit");
+        var str = document.getElementById("type");
+        var sen = document.querySelector("p");
+
+        input.addEventListener("input", check);
+        function check() {
+            if(input.value != ""){
+                sen.style.display = "block";
+            }
+
+            if(input.value == ""){
+                sen.style.display = "none";
+                input.style.borderColor = "#fff";
+                input.style.color = "#fff";
+                submit.style.color = "#fff";
+            }
+
+            if(input.value.length<=4 && input.value.length>0){
+                str.innerHTML = "weak";
+                input.style.borderColor = "red";
+                sen.style.color = "red";
+                input.style.color = "red";
+                submit.style.color = "red";
+            }
+
+            if(input.value.length>4 && input.value.length<=8){
+                str.innerHTML = "medium";
+                input.style.borderColor = "orange";
+                sen.style.color = "orange";
+                input.style.color = "orange";
+                submit.style.color = "orange";
+            }
+
+            if(input.value.length>8){
+                str.innerHTML = "strong";
+                input.style.borderColor = "green";
+                sen.style.color = "green";
+                input.style.color = "green";
+                submit.style.color = "green";
+            }
+        }
+    </script>
+</body>
+</html>
